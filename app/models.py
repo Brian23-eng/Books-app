@@ -21,6 +21,22 @@ class User(UserMixin,db.Model):
 
 
     password_hash = db.Column(db.String(255))
+    
+    
+    @property
+    def password(self):
+        raise AttributeError("You can not read password attribution")
+    @password.setter
+    def password(self, password):
+        self.hash_pass = generate_password_hash(password)
+        
+    def set_password(self,password):
+        self.hash_pass = generate_password_hash(password)
+        
+    def verify_password(self, password):
+        return check_password_hash(self.hash_pass, password)
+    
+    
 
    
 
