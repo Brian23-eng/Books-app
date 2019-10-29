@@ -4,6 +4,9 @@ class Config:
     '''
     General configuration parent class
     '''
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sam:1234@localhost/book'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     
 class ProdConfig(Config):
     '''
