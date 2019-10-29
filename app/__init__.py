@@ -1,13 +1,19 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from config import config_options
+from config import config_options,DevConfig
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_wtf.csrf import CSRFProtect
 
 
 
-
+#Initiating app extensions
+login_manager = LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'auth.login'
 bootstrap = Bootstrap()
 db = SQLAlchemy()
+csrf = CSRFProtect()
 
 
 def create_app(config_name):
@@ -25,6 +31,8 @@ def create_app(config_name):
     #Initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
+    login_manager.init_app(app)
+    csrf.init_app(app)
     
     
     
@@ -40,6 +48,9 @@ def create_app(config_name):
     # Setting config
     # from .request import configure_request
     # configure_request(app)
+    app.config.from_object(DevConfig)
+    app.config['SECRET_KEY'] = 'online5'
+    app.config['WTF_CSRF_SECRET_KEY'] = 'online5'
     
     
     return app

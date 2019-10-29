@@ -1,5 +1,6 @@
 import os
 
+
 class Config:
     '''
     General configuration parent class
@@ -7,6 +8,7 @@ class Config:
 
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sam:1234@localhost/book'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     
 class ProdConfig(Config):
     '''
