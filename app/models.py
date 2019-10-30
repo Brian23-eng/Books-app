@@ -3,6 +3,17 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 
 
+
+class Books:
+    '''
+    Books class to define the book objects
+    '''
+    def __init__(self,id,title,author,post):
+        self.id = id
+        self.title = title
+        self.author = author.name
+        self.post = 'image_url'
+
 class User(UserMixin,db.Model):
     
     __tablename__ = 'users'
