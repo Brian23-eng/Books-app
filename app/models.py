@@ -8,11 +8,14 @@ class Books:
     '''
     Books class to define the book objects
     '''
-    def __init__(self,id,title,author,post):
-        self.id = id
+    def __init__(self, rank, title,author,poster, description, publisher):
+        self.rank = rank
         self.title = title
-        self.author = author.name
-        self.post = 'image_url'
+        self.author = author
+        self.poster = 'https://s1.nyt.com/du/books/images'+ poster
+        self.description = description
+        self.publisher = publisher
+    
 
 class User(UserMixin,db.Model):
     
@@ -47,7 +50,7 @@ class User(UserMixin,db.Model):
     def verify_password(self, password):
         return check_password_hash(self.hash_pass, password)
     
-    
+   
 
    
 

@@ -1,4 +1,4 @@
 export SECRET_KEY='online5'
-BOOKS_API_KEY='254n19CVcYFlOP9YX4Ghkg'
+export BOOK_API_KEY='zXWZUr8x8WPVNP1ZKKsxeUOJRsMz7OUH'
 
 python3 manage.py server
