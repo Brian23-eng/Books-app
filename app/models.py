@@ -12,7 +12,7 @@ class Books:
         self.rank = rank
         self.title = title
         self.author = author
-        self.poster = 'https://s1.nyt.com/du/books/images'+ poster
+        self.poster = poster
         self.description = description
         self.publisher = publisher
     

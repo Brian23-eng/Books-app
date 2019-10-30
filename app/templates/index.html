@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
-{% import 'macros.html' as macro %}
-
-{% block content %}
-
-<h1>{{ macro.displayBookList(book) }}</h1>
-
+{% extends 'base.html' %} {% import 'macros.html' as macro %} {% block content %}
+<div class="container">
+    <h1>{{ macro.displayBookList(book) }}</h1>
+</div>
 {% endblock %}
