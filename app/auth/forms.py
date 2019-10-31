@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField
-from wtforms.validators import Required,Email,Length,EqualTo, DataRequired
-from wtforms import ValidationError
+from wtforms.validators import Required,Email,Length,EqualTo, DataRequired,ValidationError
+from ..models import User
 
 
 
@@ -28,6 +28,18 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Passwords',validators = [Required()])
 
     submit = SubmitField('Sign Up')
+
+    def validate_username(self,username):
+        user = User.query.filter_by(username=username.data).first()
+
+        if user:
+            raise ValidationError('That username is already taken.')
+
+    def validate_email(self,email):
+        user = User.query.filter_by(email=email.data).first()
+
+        if user:
+            raise ValidationError('An account by that email already exists.')
     
 class RequestResetForm(FlaskForm):
     email = StringField('Email',

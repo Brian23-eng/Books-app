@@ -1,0 +1,105 @@
+
+
+{% extends "base.html"%}
+
+{% block content%}
+
+<!-- <div class="container">
+
+  <div class="row">
+
+    <div class="col-sm-6">
+
+      <img src="{{review.image_path}}" class="img-responsive">
+
+    </div> -->
+
+    <div class="col-sm-6">
+
+        <h4>{{format_comment_title | safe}}</h4>
+
+        <p>{{format_comment| safe }}</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+<!-- {% extends 'base.html'%}
+
+{% import 'macros.html' as macro%}
+
+{% block content %}
+
+    <div class="container" id="shown_comments">
+
+      <div class="col-md-5">
+
+          <div class="content-section">
+
+              <div class="card">
+
+                <div class="card-header">
+
+                  <span>{{book.title}}</span>
+
+                </div>
+
+                <div class="card-body">
+
+                  <p class="card-text">Thoughts on "{{book.title}}" by {{book.user.username}}</p>
+
+                  <p>{{book.author}}</p>
+
+                </div>
+
+          </div>
+
+          </div>
+
+      </div>
+
+    <div class="col-md-7" id="reviews">
+
+      <div class="class=">
+
+        <h1>Reviews</h1>
+
+          <hr>
+
+          {% if comments %}
+
+              {{macro.displayComments(comments)}}
+
+              <a class="btn btn-warning btn-lg text-center" href="/book/comment/new/{{book.rank}}"> Write a comment</a>
+
+          {% else%}
+
+              <h3 class="text-center">This book has no comments </h3>
+
+              <a class="btn btn-warning btn-lg text-center" href="/book/comment/new/{{book.rank}}"> Write a comment</a>
+
+          {% endif %}
+
+      </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+{% endblock %}
+ -->
