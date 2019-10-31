@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+{% import 'macros.html' as macro%}
+{% block content %}
+    <div class="container">
+        <!-- Poster background -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 posterPath">
+                <img src="{{book.poster}}" alt="{{book.title}}" class="img-responsive">
+            </div>   
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 book-details">
+                <div class="thumbnail" style="border: none">
+                    <h1>{{ book.title }}</h1>   
+                    <p class="description"> {{ book.description }}</p>
+                    <p class="author"> <b> {{ book.author }}</b></p>
+                    <p class="publisher"> <b> {{ book.publisher }}</b></p>   
+                </div>
+                <h3>Reviews</h3>
+                <hr>
+                {% if reviews %}
+                    {{macro.displayReview(review)}}
+                    <a class="btn btn-success text-center" href="/book/review/new/{{book.rank}}"> Write a new reviews</a>      
+                {% else%}
+                    <h3 class="text-center">This book has no reviews </h3>
+                    <a class="btn btn-success text-center" href="/book/review/new/{{book.rank}}"> Write a new review</a>
+                {% endif %}
+            </div>
+        </div> 
+    </div>
+{%endblock%}
