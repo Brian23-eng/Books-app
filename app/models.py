@@ -35,6 +35,9 @@ class User(UserMixin,db.Model):
 
     password_hash = db.Column(db.String(255))
     
+    
+    comment = db.relationship('Comment',backref = 'user',lazy = "dynamic")
+    # book = db.relationship('Book',backref = 'user',lazy = "dynamic")
     @property
     def password(self):
         raise AttributeError("You cannot read the password attribute")
@@ -62,7 +65,7 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
 
-    book_rank = db.Column(db.Integer, db.ForeignKey("book.rank"))
+    # book_rank = db.Column(db.Integer, db.ForeignKey("book.rank"))
 
     title = db.Column(db.String(255))
 

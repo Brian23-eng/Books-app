@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class Config:
@@ -7,7 +10,7 @@ class Config:
     '''
     
     BOOK_API_BASE_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key={}'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://brian:12345 @localhost/book'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     BOOK_API_KEY = os.environ.get('BOOK_API_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SECRET_KEY = os.environ.get('SECRET_KEY')

@@ -2,3 +2,5 @@
 # flask
 /virtual
 *.pyc
+
+.env
