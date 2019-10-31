@@ -11,28 +11,40 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.index') }}"><i class="fa fa-fw fa-home"></i>Home</a></li>
+                <li style="text-align: center;">
+                    <!-- <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i
+                                class="fa fa-search"></i></button>
+                    </form> -->
+                </li>
             </ul>
+
             <div class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav navbar-right">
                     {%if current_user.is_authenticated%}
                     <li style="color:white">
                         {%if current_user.profile_pic_path%}
-                        <img src="{{url_for('static', filename = current_user.profile_pic_path)}}" alt="dp"
-                            style="border-radius:50%" width="40" height="40" style="margin-top: 10px;">
+                        <img src="{{url_for('static', filename = current_user.profile_pic_path)}}" alt="dp" style="border-radius:50%" width="40" height="40" style="margin-top: 10px;">
                     </li>
+
                     <li>
                         {%endif%}
-                    <li>
+                        <li>
 
-                        <a
-                            href="{{url_for('main.index', uname = current_user.username)}}">{{current_user.username}}</a>
-                    </li>
-                    <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
-                    {%else%}
-                    <li><a href="{{url_for('auth.login')}}" style="color: #fff;">Login</a></li>
-                    <li><a href="{{url_for('auth.register')}}">Register</a></li>
-                    {%endif%}
+                            <a href="{{url_for('main.index', uname = current_user.username)}}"><i
+                                class="fa fa-fw fa-user"></i>{{current_user.username}}</a>
+                        </li>
+                        <li><a href="{{url_for('auth.logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li>
+
+                        {%else%}
+                        <li><a href="{{url_for('auth.login')}}" style="color: #fff;"><i
+                                class="fa fa-fw fa-user"></i>Login</a></li>
+                        <li>
+                            <a href="{{url_for('auth.register')}}"> <i class="fa fa-dot-circle-o"></i> Register</a>
+                        </li>
+                        {%endif%}
 
             </div>
         </div>
