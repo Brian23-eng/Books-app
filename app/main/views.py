@@ -6,6 +6,7 @@ from ..models import Comment, User
 from flask_login import login_required
 
 
+
 @main.route('/')
 def index():
 
@@ -52,6 +53,7 @@ def new_comment(book_rank):
 
         comment.user_id = current_user.id
 
+
         db.session.add(comment)
 
         db.session.commit()
@@ -65,3 +67,42 @@ def new_comment(book_rank):
 
 
 
+@main.route('/book/review/new/<int:id>', methods = ['GET','POST'])
+@login_required
+def new_review(id):
+    form = ReviewForm()
+    book = get_book(id)
+
+    if form.validate_on_submit():
+        title = form.title.data
+        review = form.review.data
+        new_review = Review(book_rank = book_rank,
+                            book_title = book.title,
+                            image_path = book.poster,
+                            review_title = title,
+                            book_review = review,
+                            user = current_user)
+        new_review.save_review()
+        return redirect(url_for('main.book',id = book_rank ))
+
+    title = f'{book.title} review'
+    return render_template('new_review.html',
+                            title = title, 
+                            review_form = form, 
+                            book = book)
+
+@main.route("/review/<int:id>")
+def single_review(id):
+    review = Review.query.get(id)
+
+    if review is None:
+        abort(404)
+    format_review_title = markdown2.markdown(review.review_title,
+                                            extras = ["code-friendly", "fenced-code-blocks"])
+    format_review = markdown2.markdown(review.movie_review,
+                                        extras = ["code-friendly", "fenced-code-blocks"])
+    
+    return render_template("review.html", 
+                            review = review,
+                            format_review_title = format_review_title,
+                            format_review = format_review)
