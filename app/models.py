@@ -37,7 +37,6 @@ class User(UserMixin,db.Model):
     
     
     comment = db.relationship('Comment',backref = 'user',lazy = "dynamic")
-    # book = db.relationship('Book',backref = 'user',lazy = "dynamic")
     @property
     def password(self):
         raise AttributeError("You cannot read the password attribute")
@@ -88,4 +87,6 @@ class Comment(db.Model):
         db.session.delete(self)
 
         db.session.commit()
+        
+        
 

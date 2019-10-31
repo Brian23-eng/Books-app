@@ -59,6 +59,8 @@ def reset_request():
     return render_template('auth/reset_request.html', title='Reset Password', form=form)
 
 
+
+
 @auth.route("/reset_password/<token>", methods=['GET', 'POST'])
 def reset_token(token):
     # if current_user.is_authenticated:
