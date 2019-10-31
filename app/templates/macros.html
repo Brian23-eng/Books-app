@@ -1,13 +1,19 @@
 {% macro displayBookList(book_list) %} {% for book in book_list %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-2">
-            <img src="{{book.poster}}" alt="" class="rounded-circle " style="width: 200px; height: 200px;">
-            <h2>{{book.title}}</h2>
-            <h3>{{ book.author }}</h3>
+
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{book.poster}}" alt="" style="width: auto; height: auto;">
+                <div class="card-body">
+                    <div class="card-title">{{book.title}}</div>
+                    <div  class="card-text">{{ book.author }}</div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 
 {% endfor %} {% endmacro %}
+
+
+
