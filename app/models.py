@@ -1,6 +1,7 @@
 from . import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
+from datetime import datetime
 
 
 
@@ -57,3 +58,36 @@ class User(UserMixin,db.Model):
     def __repr__(self):
 
         return f'User {self.username}'
+    
+
+
+class Comment(db.Model):
+
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key = True)
+
+    book_rank = db.Column(db.Integer, db.ForeignKey("book.rank"))
+
+    title = db.Column(db.String(255))
+
+    comment = db.Column(db.String(255))
+
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    @classmethod
+
+    def get_comments(cls, id):
+
+        comments = Comment.query.filter_by(book_rank = id).all()
+
+        return comments
+
+    def delete_comment(self):
+
+        db.session.delete(self)
+
+        db.session.commit()
+
