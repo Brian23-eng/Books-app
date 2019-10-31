@@ -33,7 +33,7 @@
                         {%endif%}
                         <li>
 
-                            <a href="{{url_for('main.index', uname = current_user.username)}}"><i
+                            <a href="{{url_for('main.account', uname = current_user.username)}}"><i
                                 class="fa fa-fw fa-user"></i>{{current_user.username}}</a>
                         </li>
                         <li><a href="{{url_for('auth.logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li>

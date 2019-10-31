@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, abort, current_ap
 from PIL import Image
 from . import main
 from ..import db
-from ..request import get_books, get_book
+from ..request import get_books,get_book
 from .forms import CommentForm, UpdateAccountForm
 from ..models import Comment, User, Books, Preview
 from flask_login import login_required, current_user
