@@ -1,4 +1,5 @@
-{% macro displayBookList(book_list) %} {% for book in book_list %}
+{% macro displayBookList(book_list) %}
+{% for book in book_list %}
 <div class="container">
     <div class="row">
         <div class="col-md-2">
@@ -14,30 +15,30 @@
 
 {% macro displaycomment(comment_list) %}
 
-    {% for review in comment_list %}
+{% for review in comment_list %}
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+    <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
 
-            <h4>Author</h4>
+        <h4>Author</h4>
 
-            <p>{{comment.user.username}}</p>
+        <p>{{comment.user.username}}</p>
 
-        </div>
+    </div>
 
-        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+    <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
 
-            <h2><a href="{{url_for('main.new_comment', id = comment.id)}}">
+        <h2><a href="{{url_for('main.new_comment', id = comment.id)}}">
 
                 {{comment.comment_title}}
 
             </a></h2>
 
-        </div>
-
     </div>
 
-    {% endfor %}
+</div>
+
+{% endfor %}
 
 {% endmacro %}
