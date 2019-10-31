@@ -59,3 +59,4 @@ def new_comment(book_rank):
         return redirect(url_for('main.comments', book_rank = book_rank ))
 
     return render_template('new_comment.html', comment_form = form)
+
