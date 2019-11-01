@@ -1,24 +1,40 @@
 .ma {
     margin-right: 10px;
 }
-body{
+
+body {
     background-color: black;
 }
 
-.img-thumbnail{
-    box-shadow:1 1 5px greenyellow;
+.img-thumbnail {
+    box-shadow: 1 1 5px greenyellow;
 }
 
-.login{
+.login {
     color: white;
 }
 
-.head{
+.head {
     color: white;
-    padding-bottom: 20px ;
+    padding-bottom: 20px;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 50px;
     font-weight: bold;
 }
 
+.account {
+    color: white;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 
+.acc {
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.rat {
+    margin: auto;
+}
