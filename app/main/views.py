@@ -21,6 +21,7 @@ def index():
     book = get_books()
     title = 'Home - Welcome to the best  Online Library'
     
+    
     return render_template('index.html', title=title, book=book)
 
 @main.route('/comments/<book_rank>')
@@ -77,12 +78,13 @@ def review():
     View root page function that returns the index page and its data
     '''
     title = 'Preview - Welcome to the best  Online Library'
+    # preview = Preview.query.filter_by(book_rank = rank).all()
     
     
     if current_user.is_authenticated:
         return redirect(url_for('main.review'))
     book = Books(rank, title, author, poster, description, publisher)
-    return render_template('review.html', title=title, book=book)
+    return render_template('review.html',rank=rank, title=title, preview=preview, review=review)
 
 @main.route("/account", methods=['GET', 'POST'])
 def account():
