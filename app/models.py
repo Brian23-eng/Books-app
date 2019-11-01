@@ -16,6 +16,22 @@ class Books:
         self.poster = poster
         self.description = description
         self.publisher = publisher
+        
+class Preview:
+    '''
+    Show book previews
+    
+    '''
+    
+    def __init__(self,rank, title,author,poster, description, publisher):
+        self.rank = rank
+        self.title = title
+        self.author = author
+        self.poster = poster
+        self.description = description
+        self.publisher = publisher
+        
+        
     
 @login_manager.user_loader
 def load_user(user_id):
@@ -30,8 +46,7 @@ class User(UserMixin,db.Model):
 
     email = db.Column(db.String(255),unique = True,index = True)
 
-    # profile_pic_path = db.Column(db.String())
-
+    image_file = db.Column(db.String(255), nullable=False, default='default.jpg')
 
     password_hash = db.Column(db.String(255))
     

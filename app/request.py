@@ -1,6 +1,6 @@
 import urllib.request, json
 import requests
-from .models import Books
+from .models import Books, Preview
 # Getting api key
 api_key = None
 # Getting the book base url
@@ -31,3 +31,22 @@ def get_books():
             the_book = Books(rank, title, author, poster, description, publisher)
             books_list.append(the_book)
     return books_list
+
+def get_book():
+        get_book_details_url = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=zXWZUr8x8WPVNP1ZKKsxeUOJRsMz7OUH'
+   
+        book_details_response = requests.get(get_book_details_url).json()
+
+        book_object = None
+        if book_details_response:
+            rank = book_details_response.get("rank")
+            title = book_details_response.get('title')
+            author = book_details_response.get('author')
+            poster = book_details_response.get('poster')
+            description = book_details_response.get('description')
+            publisher = book_details_response.get('publisher')
+
+        book_object = Preview(rank, title, author, poster, description, publisher)
+
+        return book_object
+    

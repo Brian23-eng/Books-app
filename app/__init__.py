@@ -7,6 +7,7 @@ from flask_wtf.csrf import CSRFProtect
 
 
 
+
 #Initiating app extensions
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -20,6 +21,7 @@ def create_app(config_name):
     
     app = Flask(__name__)
     
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://brian:12345 @localhost/book'
     
     
       # Creating the app configurations
