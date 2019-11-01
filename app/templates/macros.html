@@ -1,17 +1,55 @@
 <div class="container">
-    <div class="row">
+    <div class="row mb-5">
         {% macro displayBookList(book_list) %} {% for book in book_list %}
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 card">
+        <div class="col-md-4">
+            <div class="card">
             <a href="url_for(main.review )"> <img src="{{book.poster}}" alt="" class="rounded-circle " style="width: 200px; height: 200px;">
                 <h3>
             </a>
-            <a href="url_for( main.review)">{{book.title}}</a></h3>
+            <div class="body">
+                <div class="card-text" style="size: 30px;">
+                        <a href="url_for( main.review)">{{book.title}}</a></h3> 
+                </div> 
+            </div>
         </div>
         {% endfor %} {% endmacro %} {% macro displaycomment(comment_list) %} {% for review in comment_list %}
         <div class="col-md-5"></div>
         <div class="col-md-2"></div>
+        </div>
     </div>
 </div>
+
+
+<div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/random/1920x1080" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div class="row">
@@ -24,7 +62,7 @@
 
     </div>
 
-    <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+    <div class="col-xs-10 col-sm-10 col-md-4 col-lg-8">
 
         <h2><a href="{{url_for('main.new_comment', id = comment.id)}}">
 
